@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дизайнерский каталог · Минимал</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <!-- Пользовательские стили -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <nav class="navbar navbar-expand-lg bg-warning border-bottom py-3 sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">MINI-BANANA<span class="text-primary">.</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Новинки</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">О нас</a></li>
+                </ul>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-dark"><i class="bi bi-search fs-5"></i></a>
+                    <a href="#" class="text-dark"><i class="bi bi-person fs-5"></i></a>
+                    <a href="#" class="text-dark position-relative">
+                        <i class="bi bi-bag fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style="font-size: 0.6rem;">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="container my-4">
+        <!-- Заголовок и сортировка -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 fw-semibold">Интерьерные светильники</h1>
+                <p class="text-secondary-emphasis" id="product-count">24 модели · минимализм и стиль</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label class="text-secondary small">Сортировка:</label>
+                <select class="form-select form-select-sm w-auto rounded-pill border-0 bg-light" id="sort-select">
+                    <option value="popular">По популярности</option>
+                    <option value="new">Сначала новинки</option>
+                    <option value="price-asc">По возрастанию цены</option>
+                    <option value="price-desc">По убыванию цены</option>
+                </select>
+                <div class="btn-group ms-2" role="group">
+                    <button type="button" class="btn btn-outline-secondary active" id="grid-view"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" id="list-view"><i class="bi bi-list-ul"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Ряд: Фильтры + Каталог -->
+        <div class="row g-4">
+            <!-- Боковая панель фильтров -->
+            <aside class="col-lg-3">
+                <div class="bg-light p-4 rounded-4 shadow-sm">
+                    <h5 class="fw-semibold mb-3">Фильтры</h5>
+
+                    <!-- Категории (радио) -->
+                    <div class="mb-4">
+                        <h6 class="fw-medium mb-2">Категория</h6>
+                        <div class="form-check">
+                            <input class="form-check-input filter-category" type="radio" name="category" id="catAll" value="all" checked>
+                            <label class="form-check-label" for="catAll">Все модели</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-category" type="radio" name="category" id="catFloor" value="Торшеры">
+                            <label class="form-check-label" for="catFloor">Торшеры</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-category" type="radio" name="category" id="catTable" value="Настольные">
+                            <label class="form-check-label" for="catTable">Настольные</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-category" type="radio" name="category" id="catWall" value="Бра">
+                            <label class="form-check-label" for="catWall">Бра</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-category" type="radio" name="category" id="catSuspension" value="Подвесные">
+                            <label class="form-check-label" for="catSuspension">Подвесные</label>
+                        </div>
+                    </div>
+
+                    <!-- Цена -->
+                    <div class="mb-4">
+                        <h6 class="fw-medium mb-2">Цена, ₽</h6>
+                        <div class="d-flex gap-2 mb-2">
+                            <input type="number" class="form-control form-control-sm" id="price-min" placeholder="от" value="0" min="0" max="50000">
+                            <input type="number" class="form-control form-control-sm" id="price-max" placeholder="до" value="50000" min="0" max="50000">
+                        </div>
+                        <div class="range-slider mt-2">
+                            <input type="range" class="form-range" id="price-range" min="0" max="50000" value="50000" step="1000">
+                        </div>
+                    </div>
+
+                    <!-- Бренды (чекбоксы) -->
+                    <div class="mb-4">
+                        <h6 class="fw-medium mb-2">Бренд</h6>
+                        <div class="form-check">
+                            <input class="form-check-input filter-brand" type="checkbox" id="brandIkea" value="Ikea" checked>
+                            <label class="form-check-label" for="brandIkea">Ikea</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-brand" type="checkbox" id="brandFlos" value="Flos">
+                            <label class="form-check-label" for="brandFlos">Flos</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-brand" type="checkbox" id="brandMuuto" value="Muuto" checked>
+                            <label class="form-check-label" for="brandMuuto">Muuto</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-brand" type="checkbox" id="brandArtemide" value="Artemide">
+                            <label class="form-check-label" for="brandArtemide">Artemide</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-brand" type="checkbox" id="brandLouisPoulsen" value="Louis Poulsen">
+                            <label class="form-check-label" for="brandLouisPoulsen">Louis Poulsen</label>
+                        </div>
+                    </div>
+
+                    <!-- Наличие -->
+                    <div class="mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="inStockOnly" checked>
+                            <label class="form-check-label" for="inStockOnly">Только в наличии</label>
+                        </div>
+                    </div>
+
+                    <!-- Кнопка применения фильтров (для мобильных) -->
+                    <button class="btn btn-primary w-100 d-lg-none mt-3" id="apply-filters-mobile">Применить фильтры</button>
+                </div>
+            </aside>
+
+            <!-- Основная область: Каталог товаров -->
+            <section class="col-lg-9">
+                <!-- Контейнер для карточек (будет заполняться через JS) -->
+                <div class="row g-4" id="products-container"></div>
+
+                <!-- Пагинация -->
+                <nav class="mt-5 d-flex justify-content-center" id="pagination-container">
+                    <!-- будет заполняться через JS -->
+                </nav>
+                
+                <!-- Кнопка "Загрузить ещё" для мобильных -->
+                <div class="text-center mt-4 d-lg-none" id="load-more-container">
+                    <button class="btn btn-outline-primary rounded-pill px-5" id="load-more">Показать ещё</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="bg-warning border-top mt-5 py-4">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            <p class="mb-0 text-secondary small">© 2025 MINI-BANANA. Дизайнерский каталог</p>
+            <ul class="list-unstyled d-flex gap-3 mb-0">
+                <li><a href="#" class="text-secondary"><i class="bi bi-telegram"></i></a></li>
+                <li><a href="#" class="text-secondary"><i class="bi bi-telegram"></i></a></li>
+                <li><a href="#" class="text-secondary"><i class="bi bi-telegram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Главный скрипт с фильтрацией -->
+    <script src="script.js"></script>
+</body>
+</html>
